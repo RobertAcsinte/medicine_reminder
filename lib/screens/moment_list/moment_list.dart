@@ -38,7 +38,7 @@ class _MomentListState extends State<MomentList> {
           ),
         ),
         itemBuilder: (context, element) {
-          return MomentTile(moment: element);
+          return MomentTileWidget(moment: element);
         },
       ),
     );
