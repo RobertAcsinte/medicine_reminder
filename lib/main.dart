@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Medicine Reminder',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
+        dividerColor: Colors.transparent,
       ),
       home: const MomentList(),
     );

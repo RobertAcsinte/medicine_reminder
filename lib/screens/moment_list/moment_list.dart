@@ -19,6 +19,7 @@ class _MomentListState extends State<MomentList> {
     final list = MomentApi.getMoments();
 
     return Scaffold(
+      backgroundColor: const Color(0xFFEFEFEF),
       appBar: AppBar(
         elevation: 0.0,
         title: const Text("Medicine Reminder"),
