@@ -21,7 +21,7 @@ class MomentTile extends StatelessWidget {
             image: AssetImage("assets/${moment.icon!}.png"),
           ),
           title: Text(moment.title!),
-          subtitle: Text(DateFormat("dd hh:mm").format(moment.date!)),
+          subtitle: Text(DateFormat("HH:mm").format(moment.date!)),
         ),
       ),
     );

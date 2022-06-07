@@ -41,7 +41,7 @@ class Medicine {
 class MomentApi {
 
   static DateTime _formatter(String date){
-    DateTime now = DateFormat("yyy-MM-dd hh:mm").parse(date);
+    DateTime now = DateFormat("yyy-MM-dd HH:mm").parse(date);
     return now;
   }
 

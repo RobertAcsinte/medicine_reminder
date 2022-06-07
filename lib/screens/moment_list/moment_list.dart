@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import '../../data/MomentApi.dart';
 import 'moment_tile.dart';
 
-
 class MomentList extends StatefulWidget {
   const MomentList({Key? key}) : super(key: key);
 
@@ -19,7 +18,6 @@ class _MomentListState extends State<MomentList> {
 
     final list = MomentApi.getMoments();
 
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -27,15 +25,15 @@ class _MomentListState extends State<MomentList> {
       ),
       body: GroupedListView<Moment, String>(
         elements: list,
-        groupBy: (element) => element.date.toString(),
-        itemComparator: (item1, item2) =>
-            item1.title!.compareTo(item2.title!),
+        //convert the date into dd MMMM string so it can be grouped into the ascending order by date
+        groupBy: (element) => DateFormat("dd MMMM").format(element.date!),
         order: GroupedListOrder.ASC,
-        useStickyGroupSeparators: true,
+        useStickyGroupSeparators: false,
         groupSeparatorBuilder: (String value) => Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(20, 40, 20, 10),
           child: Text(
-            DateFormat("EEEE d MMMM").format(DateFormat("yyyy-MM-dd hh:mm:ss").parse(value)),
+            //convert the date again to show the day of the week in the groups
+            DateFormat("EEEE d MMMM").format(DateFormat("d MMMM").parse(value)),
             style: const TextStyle(fontSize: 20),
           ),
         ),
