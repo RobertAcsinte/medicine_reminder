@@ -3,7 +3,7 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 
 import '../../data/MomentApi.dart';
-import 'moment_tile.dart';
+import '../../widgets/moment_tile.dart';
 
 class MomentList extends StatefulWidget {
   const MomentList({Key? key}) : super(key: key);
@@ -20,22 +20,21 @@ class _MomentListState extends State<MomentList> {
 
     return Scaffold(
       backgroundColor: const Color(0xFFEFEFEF),
-      appBar: AppBar(
-        elevation: 0.0,
-        title: const Text("Medicine Reminder"),
-      ),
       body: GroupedListView<Moment, String>(
         elements: list,
         //convert the date into dd MMMM string so it can be grouped into the ascending order by date
-        groupBy: (element) => DateFormat("dd MMMM").format(element.date!),
+        groupBy: (element) => DateFormat("dd MMMM yyyy").format(element.date!),
         order: GroupedListOrder.ASC,
         useStickyGroupSeparators: false,
         groupSeparatorBuilder: (String value) => Padding(
-          padding: const EdgeInsets.fromLTRB(20, 40, 20, 10),
+          padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
           child: Text(
+              style: const TextStyle(
+                fontWeight: FontWeight.w300,
+                fontSize: 20,
+              ),
             //convert the date again to show the day of the week in the groups
-            DateFormat("EEEE d MMMM").format(DateFormat("d MMMM").parse(value)),
-            style: const TextStyle(fontSize: 20),
+            DateFormat("EEEE d MMMM").format(DateFormat("d MMMM yyyy").parse(value)),
           ),
         ),
         itemBuilder: (context, element) {
